@@ -16,7 +16,9 @@ async function fetchDocument(id) {
   const res = await google.docs({version: "v1", auth}).documents.get({
     documentId: id,
   })
-  console.log('res: ', res)
+  console.log('res title: ', res.data.title);
+  console.log('res body: ', res.data.body);
+  console.log('res styles: ', res.data.documentStyle);
 
   if (!res.data) {
     throw new Error("Empty Data")
