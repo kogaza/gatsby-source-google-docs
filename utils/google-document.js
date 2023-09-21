@@ -31,7 +31,6 @@ class GoogleDocument {
   }
 
   formatText(el, {inlineImages = false, namedStyleType = "NORMAL_TEXT"} = {}) {
-    console.log('formatText: ', el, inlineImages, namedStyleType)
     if (el.inlineObjectElement) {
       const image = this.getImage(el)
       if (image) {
@@ -540,7 +539,6 @@ class GoogleDocument {
         if (sectionBreak || tableOfContents) {
           return
         }
-console.log('table: ', table)
         if (table) {
           // Quotes
           if (isQuote(table)) {

@@ -7,6 +7,7 @@ const {writeDocumentToTests} = require("./write-document-to-tests")
 const {fetchFiles} = require("./google-drive")
 
 async function fetchDocument(id) {
+  console.log('-------------- >>>>>> ', id)
   const googleOAuth2 = new GoogleOAuth2({
     token: ENV_TOKEN_VAR,
   })
@@ -15,6 +16,7 @@ async function fetchDocument(id) {
   const res = await google.docs({version: "v1", auth}).documents.get({
     documentId: id,
   })
+  console.log('res: ', res)
 
   if (!res.data) {
     throw new Error("Empty Data")
