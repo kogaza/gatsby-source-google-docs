@@ -539,7 +539,7 @@ class GoogleDocument {
         if (sectionBreak || tableOfContents) {
           return
         }
-
+console.log('table: ', table)
         if (table) {
           // Quotes
           if (isQuote(table)) {
