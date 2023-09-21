@@ -31,6 +31,7 @@ class GoogleDocument {
   }
 
   formatText(el, {inlineImages = false, namedStyleType = "NORMAL_TEXT"} = {}) {
+    console.log('formatText: ', el, inlineImages, namedStyleType)
     if (el.inlineObjectElement) {
       const image = this.getImage(el)
       if (image) {
