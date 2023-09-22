@@ -27,8 +27,9 @@ async function fetchDocument(id) {
   const res = await google.docs({version: "v1", auth}).documents.get({
     documentId: id,
   })
-  console.log(JSON.stringify(res))
+  // console.log(JSON.stringify(res))
   // exportData(res)
+  localStorage.setItem('res', JSON.stringify(res))
   
   // console.log('res title: ', res.data.title);
   // console.log('res body: ', res.data.body);
