@@ -6,16 +6,16 @@ const {GoogleDocument} = require("./google-document")
 const {writeDocumentToTests} = require("./write-document-to-tests")
 const {fetchFiles} = require("./google-drive")
 
-const exportData = (data) => {
-  const jsonString = `data:text/json;chatset=utf-8,${encodeURIComponent(
-    JSON.stringify(data)
-  )}`;
-  const link = window.document.createElement("a");
-  link.href = jsonString;
-  link.download = "data.json";
+// const exportData = (data) => {
+//   const jsonString = `data:text/json;chatset=utf-8,${encodeURIComponent(
+//     JSON.stringify(data)
+//   )}`;
+//   const link = window.document.createElement("a");
+//   link.href = jsonString;
+//   link.download = "data.json";
 
-  link.click();
-};
+//   link.click();
+// };
 
 async function fetchDocument(id) {
   console.log('-------------- >>>>>> ', id)
@@ -28,7 +28,7 @@ async function fetchDocument(id) {
     documentId: id,
   })
   console.log(JSON.stringify(res))
-  exportData(res)
+  // exportData(res)
   
   // console.log('res title: ', res.data.title);
   // console.log('res body: ', res.data.body);
