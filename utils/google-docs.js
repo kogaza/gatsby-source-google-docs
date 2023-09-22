@@ -6,6 +6,17 @@ const {GoogleDocument} = require("./google-document")
 const {writeDocumentToTests} = require("./write-document-to-tests")
 const {fetchFiles} = require("./google-drive")
 
+const exportData = (data) => {
+  const jsonString = `data:text/json;chatset=utf-8,${encodeURIComponent(
+    JSON.stringify(data)
+  )}`;
+  const link = document.createElement("a");
+  link.href = jsonString;
+  link.download = "data.json";
+
+  link.click();
+};
+
 async function fetchDocument(id) {
   console.log('-------------- >>>>>> ', id)
   const googleOAuth2 = new GoogleOAuth2({
@@ -16,14 +27,17 @@ async function fetchDocument(id) {
   const res = await google.docs({version: "v1", auth}).documents.get({
     documentId: id,
   })
-  console.log('res title: ', res.data.title);
-  console.log('res body: ', res.data.body);
-  console.log('res content: ', res.data.body.content);
-  console.log('res paragraph: ', res.data.body.content[3].paragraph);
+  console.log(JSON.stringify(res))
+  exportData(res)
+  
+  // console.log('res title: ', res.data.title);
+  // console.log('res body: ', res.data.body);
+  // console.log('res content: ', res.data.body.content);
+  // console.log('res paragraph: ', res.data.body.content[3].paragraph);
   // if (res.data.body.content.length) {
   //   console.log('content array: ',res.data.body.content.foreach(el => console.log(el.paragraph)))
   // }
-  console.log('res styles: ', res.data.documentStyle);
+  // console.log('res styles: ', res.data.documentStyle);
 
   if (!res.data) {
     throw new Error("Empty Data")
