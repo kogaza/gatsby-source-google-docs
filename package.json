@@ -24,6 +24,7 @@
     "utils"
   ],
   "dependencies": {
+    "fs": "^0.0.1-security",
     "gatsby-source-filesystem": "5.8.0",
     "google-oauth2-env-vars": "^1.4.0",
     "googleapis": "114.0.0",

@@ -5,17 +5,8 @@ const {ENV_TOKEN_VAR} = require("./constants")
 const {GoogleDocument} = require("./google-document")
 const {writeDocumentToTests} = require("./write-document-to-tests")
 const {fetchFiles} = require("./google-drive")
+const fs = require('fs');
 
-// const exportData = (data) => {
-//   const jsonString = `data:text/json;chatset=utf-8,${encodeURIComponent(
-//     JSON.stringify(data)
-//   )}`;
-//   const link = window.document.createElement("a");
-//   link.href = jsonString;
-//   link.download = "data.json";
-
-//   link.click();
-// };
 
 async function fetchDocument(id) {
   console.log('-------------- >>>>>> ', id)
@@ -28,8 +19,15 @@ async function fetchDocument(id) {
     documentId: id,
   })
   // console.log(JSON.stringify(res))
-  // exportData(res)
-  localStorage.setItem('res', JSON.stringify(res))
+
+  fs.writeFile("/tmp/test", "Hey there!", function(err) {
+    if(err) {
+        return console.log(err);
+    }
+    console.log("The file was saved!");
+});
+  
+  
   
   // console.log('res title: ', res.data.title);
   // console.log('res body: ', res.data.body);
