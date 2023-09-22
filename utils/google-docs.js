@@ -18,9 +18,10 @@ async function fetchDocument(id) {
   })
   console.log('res title: ', res.data.title);
   console.log('res body: ', res.data.body);
-  if (res.data.body.content.length) {
-    console.log('content array: ',res.data.body.content.foreach(el => console.log(el.paragraph)))
-  }
+  console.log('res content: ', res.data.body.content);
+  // if (res.data.body.content.length) {
+  //   console.log('content array: ',res.data.body.content.foreach(el => console.log(el.paragraph)))
+  // }
   console.log('res styles: ', res.data.documentStyle);
 
   if (!res.data) {
