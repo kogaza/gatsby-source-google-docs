@@ -497,14 +497,6 @@ class GoogleDocument {
     this.elements.push(...footnotes)
   }
 
-  processDemoteHeadings() {
-    this.headings.forEach((heading) => {
-      const levelevel = Number(heading.tag.substring(1))
-      const newLevel = levelevel < 6 ? levelevel + 1 : levelevel
-      this.elements[heading.index] = {type: "h" + newLevel, value: heading.text}
-    })
-  }
-
   processInternalLinks() {
     if (Object.keys(this.links).length > 0) {
       const elementsStringified = JSON.stringify(this.elements)
@@ -565,11 +557,6 @@ class GoogleDocument {
 
     // Footnotes
     this.processFootnotes()
-
-    // h1 -> h2, h2 -> h3, ...
-    if (this.options.demoteHeadings === true) {
-      this.processDemoteHeadings()
-    }
 
     this.processInternalLinks()
   }
