@@ -10,6 +10,7 @@ const MD_URL_TITLE_REGEX = new RegExp(
   `(${IMAGE_URL_REGEX.source}) "([^)]*)"`,
   "g"
 )
+console.log('-update-images-')
 
 exports.updateImages = async ({
   node,
