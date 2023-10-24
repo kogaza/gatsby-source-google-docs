@@ -9,7 +9,6 @@ const fs = require('fs');
 
 
 async function fetchDocument(id) {
-  console.log('-------------- >>>>>> ', id)
   const googleOAuth2 = new GoogleOAuth2({
     token: ENV_TOKEN_VAR,
   })
@@ -18,26 +17,14 @@ async function fetchDocument(id) {
   const res = await google.docs({version: "v1", auth}).documents.get({
     documentId: id,
   })
-  // console.log(JSON.stringify(res))
 
-  fs.writeFile("/tmp/test", "Hey there!", function(err) {
-    if(err) {
-        return console.log(err);
-    }
-    console.log("The file was saved!");
-});
+  // fs.writeFile("/tmp/test", "Hey there!", function(err) {
+  //   if(err) {
+  //       return console.log(err);
+  //   }
+  //   console.log("The file was saved!");
+  // });
   
-  
-  
-  // console.log('res title: ', res.data.title);
-  // console.log('res body: ', res.data.body);
-  // console.log('res content: ', res.data.body.content);
-  // console.log('res paragraph: ', res.data.body.content[3].paragraph);
-  // if (res.data.body.content.length) {
-  //   console.log('content array: ',res.data.body.content.foreach(el => console.log(el.paragraph)))
-  // }
-  // console.log('res styles: ', res.data.documentStyle);
-
   if (!res.data) {
     throw new Error("Empty Data")
   }
